@@ -25,16 +25,16 @@ def rotate(motion, mode=''):
     @param mode: The rotation reference, choose one of the options above
     @return: The normalization rotation
     """
-    if 'mean' in options:
+    if 'mean' in mode:
         return byMean(motion)
-    elif 'start' in options:
+    elif 'start' in mode:
         return byStart(motion)
-    elif 'end' in options:
+    elif 'end' in mode:
         return byEnd(motion)
     return numpy.array([1.0,0.0,0.0,0.0])
 
 def byMean(motion):
-    reference = averageQuaternions(numpy.array(motion))
+    reference = averageQuaternions(numpy.array(motion[:,3:7]))
     rotateBy(motion, reference)
     return reference
 

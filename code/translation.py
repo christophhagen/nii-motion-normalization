@@ -23,13 +23,13 @@ def translate(motion, mode=''):
     @param options: The translation reference, choose one of the options above
     @return: The normalization translation for each dimension
     """
-    if 'start' in options:
+    if 'start' in mode:
         return toStartPoint(motion)
-    if 'median' in options:
+    if 'median' in mode:
         return toMedianCenter(motion)
-    if 'mean' in options:
+    if 'mean' in mode:
         return toMeanCenter(motion)
-    if 'end' in options:
+    if 'end' in mode:
         return toEndPoint(motion)
     return numpy.zeros(3)
 

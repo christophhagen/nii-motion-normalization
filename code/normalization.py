@@ -3,7 +3,7 @@ from input import read
 import translation
 import rotation
 import scaling
-import clean
+import cleaning
 
 def readNormalized(file, translate='', rotate='', scale='', clean=True):
     """!
@@ -17,7 +17,7 @@ def readNormalized(file, translate='', rotate='', scale='', clean=True):
     @return: The normalized motion and the normalization parameters
     """
     motion = read(file)
-    motion, t, r, s = normalize(motion, translate, rotate, scale, cleaning)
+    motion, t, r, s = normalize(motion, translate, rotate, scale, clean)
     return motion, t, r, s
 
 def normalize(motion, translate='', rotate='', scale='', clean=True):
@@ -34,8 +34,8 @@ def normalize(motion, translate='', rotate='', scale='', clean=True):
     @return: The normalized motion and the normalization parameters
     """
     out = motion
-    translationRef = translation.tranlate(out[:,1:4], translate)
-    rotationRef = rotation.rotate(out[:,4:8], rotate)
+    translationRef = translation.translate(out[:,1:4], translate)
+    rotationRef = rotation.rotate(out[:,1:8], rotate)
     scalingRef = scaling.scale(out[:,1:4], scale)
-    out, removedPoints = clean.clean(motion)
+    out, removedPoints = cleaning.clean(motion)
     return out, translationRef, rotationRef, scalingRef

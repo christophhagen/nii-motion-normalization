@@ -8,7 +8,7 @@ def clean(motion, correctFrames=True, threshold= 1E-7, factor=3):
     @param correctFrames Boolean: If the frame numbering should be corrected, defaults to True
     @param threshold Number: The distance between two points to be considered equal, default 1E-7
     @param factor Number: The threshold for detecting jumps as a multiple of the mean distance between all points, default 3
-    @return The largest section of the motion without dublicate points, the number of removed points
+    @return The largest section of the motion without dublicate points, and the number of removed points
     """
     out, count1 = removeDoublePoints(motion)
     out, count2 = removeInvalidParts(motion)

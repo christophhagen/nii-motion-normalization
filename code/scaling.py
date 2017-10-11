@@ -22,11 +22,11 @@ def scale(motion, mode=''):
     @param mode: The scaling reference, choose one of the options above
     @return: The normalization scaling for each dimension
     """
-    if 'components' in options:
+    if 'components' in mode:
         return scaleComponents(motion)
-    if 'largest' in options:
+    if 'largest' in mode:
         return scaleLargest(motion)
-    if 'smallest' in options:
+    if 'smallest' in mode:
         return scaleSmallest(motion)
     return numpy.zeros(3)
 
